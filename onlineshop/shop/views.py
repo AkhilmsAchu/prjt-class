@@ -12,3 +12,5 @@ def add(request):
 	print(type(var1))
 	result=var1+var2
 	return render(request,'result.html',{'result':result})
+def about(request):
+	return render(request,'about.html')
