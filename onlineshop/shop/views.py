@@ -14,3 +14,5 @@ def add(request):
 	return render(request,'result.html',{'result':result})
 def about(request):
 	return render(request,'about.html')
+def property(request):
+	return render(request,'property-grid.html')

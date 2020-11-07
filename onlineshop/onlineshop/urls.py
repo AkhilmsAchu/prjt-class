@@ -18,6 +18,7 @@ from django.urls import path
 from shop import views
 
 urlpatterns = [
+    path('property',views.property,name='property'),
     path('add',views.add,name='add'),
     path('about',views.about,name='about'),
 	path('',views.home,name="index"),
