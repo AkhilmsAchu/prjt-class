@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import property as promodel
 # Create your views here.
 def home(request):
 	return render(request,'index.html',{'name':'akhil','age':'12'})
@@ -15,4 +16,5 @@ def add(request):
 def about(request):
 	return render(request,'about.html')
 def property(request):
-	return render(request,'property-grid.html')
+	pro=promodel.objects.all()
+	return render(request,'property-grid.html',{'properties':pro})
