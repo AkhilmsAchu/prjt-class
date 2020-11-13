@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('register',views.register,name='register'),
     path('property',views.property,name='property'),
     path('add',views.add,name='add'),
     path('about',views.about,name='about'),

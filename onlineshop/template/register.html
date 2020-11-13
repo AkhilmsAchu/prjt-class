@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <main id="main">
+<section class="section-about" style="padding-top: 120px">
+	
+
+
+<h2>register</h2>
+
+<form action="register" method="POST">
+	 {% csrf_token %} 
+	<input type="text" name="fname" placeholder="first name"><br>
+	<input type="text" name="lname" placeholder="last name"><br>
+	<input type="email" name="email" placeholder="email"><br>
+	<input type="text" name="username" placeholder="username"><br>
+	<input type="password" name="password" placeholder="password"><br>
+	<input type="submit" name="">
+</form>
+
+</section>
+</main>
+
+ {% endblock %}
