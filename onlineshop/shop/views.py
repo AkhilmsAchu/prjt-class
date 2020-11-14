@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import property as promodel
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, auth
 # Create your views here.
 def home(request):
 	return render(request,'index.html',{'name':'akhil','age':'12'})
@@ -28,11 +28,34 @@ def register(request):
 		un=request.POST['username']
 		pwd=request.POST['password']
 		
-		userob=User.objects.create_user(username=un,password=pwd,first_name=fn,last_name=ln,email=email)
-		userob.save()
-		print("user created")
-		return redirect('/')
+		if User.objects.filter(username=un).exists():
+			return render(request,'register.html',{'msg':"username already taken"})
+		else:
+			userob=User.objects.create_user(username=un,password=pwd,first_name=fn,last_name=ln,email=email)
+			userob.save()
+			print("user created")
+			return redirect('/')
 	
 		
 	else:
 		return render(request,'register.html')
+
+def login(request):
+
+	if request.method=='POST':
+		un=request.POST['username']
+		pwd=request.POST['password']
+		userob=auth.authenticate(username=un,password=pwd)
+		if userob is not None:
+			auth.login(request, userob)
+			return redirect("/")
+		else:
+			return render(request,'login.html',{'msg':"username or password doesn't exist"})
+
+
+	else:
+		return render(request,'login.html')
+
+def logout(request):
+	auth.logout(request)
+	return redirect("/")
