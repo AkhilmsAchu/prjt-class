@@ -59,3 +59,17 @@ def login(request):
 def logout(request):
 	auth.logout(request)
 	return redirect("/")
+
+def editprofile(request):
+	if request.method=='POST':
+		fn=request.POST['fname']
+		ln=request.POST['lname']
+		pwd=request.POST['password']
+		userob=request.user
+		userob.first_name=fn
+		userob.last_name=ln
+		userob.set_password(pwd)
+		userob.save()
+		return redirect("/")
+	else:
+		return render(request,'editprofile.html')
