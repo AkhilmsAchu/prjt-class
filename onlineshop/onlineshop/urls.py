@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('singlepro',views.singlepro,name='singlepro'),
     path('logout',views.logout,name='logout'),
     path('login',views.login,name='login'),
     path('register',views.register,name='register'),

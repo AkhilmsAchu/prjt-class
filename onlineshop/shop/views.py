@@ -73,3 +73,13 @@ def editprofile(request):
 		return redirect("/")
 	else:
 		return render(request,'editprofile.html')
+
+def singlepro(request):
+	var=request.GET['id']
+	try:
+		pro=promodel.objects.get(id=var)
+	except Exception as e:
+		print(e)
+		return redirect('/')
+	print(pro)
+	return render(request,'property-single.html',{'property':pro})
