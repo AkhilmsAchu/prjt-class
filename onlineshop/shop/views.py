@@ -83,3 +83,13 @@ def singlepro(request):
 		return redirect('/')
 	print(pro)
 	return render(request,'property-single.html',{'property':pro})
+
+def deletepro(request):
+	var=request.GET['id']
+	try:
+		pro=promodel.objects.get(id=var)
+		pro.delete()
+	except Exception as e:
+		print(e)
+		return redirect('/')
+	return redirect('property')
