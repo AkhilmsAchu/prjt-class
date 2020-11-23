@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import property as promodel
 from django.contrib.auth.models import User, auth
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
 	return render(request,'index.html',{'name':'akhil','age':'12'})
@@ -84,6 +85,7 @@ def singlepro(request):
 	print(pro)
 	return render(request,'property-single.html',{'property':pro})
 
+@login_required(login_url='login')
 def deletepro(request):
 	var=request.GET['id']
 	try:

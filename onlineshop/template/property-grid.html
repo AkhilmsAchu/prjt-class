@@ -67,9 +67,11 @@
                     <a href="singlepro?id={{item.id}}" class="link-a">Click here to view
                       <span class="ion-ios-arrow-forward"></span>
                     </a>
+                    {% if user.is_authenticated %}
                     <a href="deletepro?id={{item.id}}" class="link-a">Delete
                       <span class="ion-ios-arrow-forward"></span>
                     </a>
+                    {% endif %}
                   </div>
                   <div class="card-footer-a">
                     <ul class="card-info d-flex justify-content-around">
