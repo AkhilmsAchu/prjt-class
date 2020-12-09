@@ -9,11 +9,10 @@
 
 <h2>edit property</h2>
 
-<form action="editpro" method="POST">
+<form action="editpro/{{ property.id }}" method="POST">
 	 {% csrf_token %} 
 	<input type="text" name="name" placeholder="name" value="{{ property.name }}"><br>
 	<input type="text" name="price" placeholder="price" value="{{ property.price }}"><br>
-	<input type="text" name="id" placeholder="price" value="{{ property.id }}" style="display: none" ><br>
 	<input type="submit" name="">
 </form>
 {% if msg %}

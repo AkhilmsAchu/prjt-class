@@ -96,17 +96,15 @@ def deletepro(request):
 		return redirect('/')
 	return redirect('property')
 
-def editpro(request):
+def editpro(request,id):
 	if request.method=='POST':
-		var=request.POST['id']
 		newname=request.POST['name']
 		newprice=request.POST['price']
-		pro=promodel.objects.get(id=var)
+		pro=promodel.objects.get(id=id)
 		pro.name=newname
 		pro.price=newprice
 		pro.save()
 		return redirect("property")
 	else:
-		var=request.GET['id']
-		pro=promodel.objects.get(id=var)
+		pro=promodel.objects.get(id=id)
 		return render(request,'editpro.html',{'property':pro})
